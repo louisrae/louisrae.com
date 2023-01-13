@@ -1,0 +1,48 @@
+{% load static tailwind_tags %}
+{% load markdownify %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Louis-Rae - here's what I do</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% tailwind_css %}
+</head>
+
+<body>
+    <header>
+        <nav class="bg-gray-800 flex fixed w-screen">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div class="relative flex h-16 items-center justify-between">
+                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                        <div class="hidden sm:ml-6 sm:block">
+                            <div class="flex space-x-4">
+                                <!-- Current: "bg-gray-900 text-white"
+								Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                <a href="{% url 'essays' %}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">essays</a>
+
+                                <a href="{% url 'books' %}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">books</a>
+
+                                <a href="{% url 'devlog' %}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">.plan</a>
+
+                                <a href="https://github.com/louisrae"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    target="_blank">projects</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    <!-- Content Goes here -->
+    {% endblock content %}
+</body>

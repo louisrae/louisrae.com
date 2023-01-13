@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load markdownify %}
+{% block content %}
+
+<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+    <div class="bg-white">
+        <div class="mx-auto max-w-7xl pt-24 px-6 lg:px-8">
+            <div class="text-center">
+                <p class="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">Books</p>
+                <p class="mx-auto mt-5  max-w-xl text-xl text-gray-500">Books I have read, and my thoughts on them
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div class="mt-4 flex justify-center">
+            <div class="inline-block py-4 px-6">
+                <table class="min-w-full divide-y divide-gray-300">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th scope=" col"
+                                class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-6">
+                                Book Title</th>
+                            <th scope="col" class="text-center text-sm font-semibold text-gray-900">
+                                Author</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Read Again</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Quick Notes</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Highlights</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Date Finished</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Rating</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Book Link</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                Format</th>
+                            <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">
+                                # Completed</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in book_list %}
+                        <tr>
+                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 text-center">
+                                {{book.book_title}}</td>
+                            <td class="px-3 py-4 text-sm text-gray-500 text-center">{{book.author}}</td>
+                            <td class="whitespace-px-3 py-4 text-sm text-gray-500 text-center">
+                                {{book.read_again|yesno:"Yes,No"}}
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">{{book.notes}}
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-blue-500 text-center underline">
+                                <a href="{{book.highlights}}">CSV Highlights</a>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                {{book.date_finished.date}}
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">{{book.rating}}
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-blue-500 text-center underline">
+                                <a href="{{book.goodreads_link}}">Goodreads</a>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                {{book.format_read}}
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                {{book.times_read}}
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                        <!-- More people... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</body>
+{%endblock%}
