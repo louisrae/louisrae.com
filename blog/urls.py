@@ -4,7 +4,7 @@ from . import views
 from .views import EssayView
 
 urlpatterns = [
-    path("essays", views.essays, name="essays"),
+    path("", views.essays, name="essays"),
     path("devlog", views.devlog, name="devlog"),
     path("content", views.content, name="content"),
     path("books", views.books, name="books"),
